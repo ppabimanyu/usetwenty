@@ -7,12 +7,14 @@ export const env = createEnv({
     BETTER_AUTH_SECRET: z.string().min(1),
     BETTER_AUTH_URL: z.url().min(1),
     AUTH_REQUIRED_EMAIL_VERIFICATION: z.boolean(),
-    AUTH_GITHUB_CLIENT_ID: z.string().min(1),
-    AUTH_GITHUB_CLIENT_SECRET: z.string().min(1),
-    AUTH_GOOGLE_CLIENT_ID: z.string().min(1),
-    AUTH_GOOGLE_CLIENT_SECRET: z.string().min(1),
+    AUTH_GITHUB_CLIENT_ID: z.string().optional(),
+    AUTH_GITHUB_CLIENT_SECRET: z.string().optional(),
+    AUTH_GOOGLE_CLIENT_ID: z.string().optional(),
+    AUTH_GOOGLE_CLIENT_SECRET: z.string().optional(),
     STORAGE_PROVIDER: z.enum(["local", "vercel-blob", "s3"]).default("local"),
     BLOB_READ_WRITE_TOKEN: z.string().optional(),
+
+    MAIL_SENDER: z.enum(["log", "smtp"]).default("log"),
 
     // SMTP Configuration for email sending
     SMTP_HOST: z.string().optional(),
@@ -53,6 +55,8 @@ export const env = createEnv({
 
     STORAGE_PROVIDER: process.env.STORAGE_PROVIDER,
     BLOB_READ_WRITE_TOKEN: process.env.BLOB_READ_WRITE_TOKEN,
+
+    MAIL_SENDER: process.env.MAIL_SENDER,
 
     // SMTP Configuration
     SMTP_HOST: process.env.SMTP_HOST,
