@@ -4,7 +4,9 @@ import {
   ChevronRight,
   Form,
   LayoutDashboard,
+  Settings,
   SquareTerminal,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,7 +29,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navMain: {
+const navWorkspace: {
   title: string;
   url: string;
   icon: LucideIcon;
@@ -37,25 +39,26 @@ const navMain: {
   }[];
 }[] = [
   {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: LayoutDashboard,
+    title: "Settings",
+    url: "/workspace/settings",
+    icon: Settings,
     items: [],
   },
   {
-    title: "My Issues",
-    url: "/my-issues",
-    icon: Form,
+    title: "Teams",
+    url: "/workspace/teams",
+    icon: Users,
     items: [],
   },
 ];
 
-export function SidebarNavMain() {
+export function SidebarNavWorkspace() {
   const pathname = usePathname();
   return (
     <SidebarGroup>
+      <SidebarGroupLabel>Workspace</SidebarGroupLabel>
       <SidebarMenu>
-        {navMain.map((item) => (
+        {navWorkspace.map((item) => (
           <Collapsible
             key={item.title}
             asChild
