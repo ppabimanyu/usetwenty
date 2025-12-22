@@ -15,16 +15,21 @@ import { usePathname } from "next/navigation";
 const navProject: {
   id: string;
   name: string;
-}[] = [
-  {
-    id: "1",
-    name: "Project 1",
-  },
-  {
-    id: "2",
-    name: "Project 2",
-  },
-];
+}[] = [];
+
+const navProjectItems = () => {
+  const data: {
+    id: string;
+    name: string;
+  }[] = [];
+  for (let i = 1; i <= 20; i++) {
+    data.push({
+      id: i.toString(),
+      name: `Project ${i}`,
+    });
+  }
+  return data;
+};
 
 export function SidebarNavProject() {
   const pathname = usePathname();
@@ -32,7 +37,7 @@ export function SidebarNavProject() {
     <SidebarGroup>
       <SidebarGroupLabel>Project</SidebarGroupLabel>
       <SidebarMenu>
-        {navProject.map((item) => (
+        {navProjectItems().map((item) => (
           <SidebarMenuItem key={item.id}>
             <SidebarMenuButton
               asChild
