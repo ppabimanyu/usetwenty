@@ -11,6 +11,7 @@ import { SidebarNavSecondary } from "./sidebar-nav-secondary";
 import { SidebarNavUser } from "./sidebar-user";
 import SidebarAppHeader from "./sidebar-app-header";
 import { SidebarNavWorkspace } from "./sidebar-nav-workspace";
+import { SidebarNavProject } from "./sidebar-nav-project";
 
 export function SidebarApp({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -19,6 +20,7 @@ export function SidebarApp({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarNavMain />
         <SidebarNavWorkspace />
+        <SidebarNavProject />
         <SidebarNavSecondary className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
