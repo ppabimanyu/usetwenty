@@ -11,18 +11,14 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navProject: {
-  id: string;
-  name: string;
-}[] = [];
+import { CreateProjectDialog } from "./create-project-dialog";
 
 const navProjectItems = () => {
   const data: {
     id: string;
     name: string;
   }[] = [];
-  for (let i = 1; i <= 20; i++) {
+  for (let i = 1; i <= 5; i++) {
     data.push({
       id: i.toString(),
       name: `Project ${i}`,
@@ -35,7 +31,10 @@ export function SidebarNavProject() {
   const pathname = usePathname();
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Project</SidebarGroupLabel>
+      <SidebarGroupLabel className="flex items-center justify-between">
+        <span>Project</span>
+        <CreateProjectDialog />
+      </SidebarGroupLabel>
       <SidebarMenu>
         {navProjectItems().map((item) => (
           <SidebarMenuItem key={item.id}>

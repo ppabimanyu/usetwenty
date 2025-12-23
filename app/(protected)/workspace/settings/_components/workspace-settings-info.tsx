@@ -19,7 +19,6 @@ export function WorkspaceSettingsInfo() {
   const workspaceForm = useForm({
     defaultValues: {
       name: "My Workspace",
-      slug: "my-workspace",
       description: "",
     },
     validators: {
@@ -28,14 +27,6 @@ export function WorkspaceSettingsInfo() {
           .string()
           .min(3, "Name must be at least 3 characters")
           .max(50, "Name must be at most 50 characters"),
-        slug: z
-          .string()
-          .min(3, "Slug must be at least 3 characters")
-          .max(30, "Slug must be at most 30 characters")
-          .regex(
-            /^[a-z0-9-]+$/,
-            "Slug can only contain lowercase letters, numbers, and hyphens"
-          ),
         description: z
           .string()
           .max(200, "Description must be at most 200 characters"),
@@ -75,33 +66,6 @@ export function WorkspaceSettingsInfo() {
                   <FieldError errors={field.state.meta.errors} />
                   <FieldDescription>
                     This is the display name of your workspace.
-                  </FieldDescription>
-                </Field>
-              )}
-            </workspaceForm.Field>
-            <workspaceForm.Field name="slug">
-              {(field) => (
-                <Field>
-                  <FieldLabel htmlFor="slug">Workspace URL</FieldLabel>
-                  <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground text-sm">
-                      usetwenty.com/
-                    </span>
-                    <Input
-                      id="slug"
-                      placeholder="my-workspace"
-                      className="max-w-xs"
-                      value={field.state.value}
-                      onChange={(e) =>
-                        field.handleChange(e.target.value.toLowerCase())
-                      }
-                      onBlur={field.handleBlur}
-                    />
-                  </div>
-                  <FieldError errors={field.state.meta.errors} />
-                  <FieldDescription>
-                    The URL slug for your workspace. Use lowercase letters,
-                    numbers, and hyphens only.
                   </FieldDescription>
                 </Field>
               )}
